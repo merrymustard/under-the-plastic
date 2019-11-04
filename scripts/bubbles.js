@@ -1,7 +1,6 @@
 /*jshint esversion: 6 */
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+
 
 
 
@@ -54,6 +53,7 @@ function animateBubbles(){
     requestAnimationFrame(animateBubbles);
     // ctx.clearRect(0,0,innerWidth,innerHeight);
     clearCanvas();
+    ocean.draw();
     //draw them on the screen
     for(let i=0; i<bubbleArray.length; i++){
         bubbleArray[i].update();
@@ -70,22 +70,3 @@ function clearCanvas() {
 console.log(bubbleArray);
 
 
-
-
-
-
-
-//Make the bubbles go up
-// var y = canvas.width - 30;
-
-// //create a loop to animate the bubbles
-// function animateBubbles(){
-//     requestAnimationFrame(animateBubbles);
-//     ctx.clearRect(0,0,innerWidth,innerHeight);
-//     ctx.beginPath();
-//     ctx.fillStyle = 'rgba(181,204,230,0.6)';
-//     ctx.arc(200, y, 30, 0, 2*Math.PI, false);
-//     ctx.fill();
-//     //ctx.closePath();
-//     y -=1;
-// }
