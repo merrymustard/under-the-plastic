@@ -37,10 +37,35 @@ function startGame() {
         clearCanvas();
         ocean.draw();
         shark.draw();
-        crab.draw();
         crabAnimation();
+        crab.draw();
+        crab.x += crab.vx;
+        crab.y += crab.vy;
+        crab.y += gravity;
+
       }
   
+
+
+
+      document.onkeydown = e => {
+        switch (e.keyCode) {
+          case 65:
+            crab.moveLeft();
+            return;
+          case 83:
+            crab.moveRight();
+            return;
+          case 90:
+            crab.jump();
+            return;
+        }
+      };
+      
+      document.onkeyup = e => {
+        crab.vx = 0;
+        crab.position = 0;
+      };
   
   
   

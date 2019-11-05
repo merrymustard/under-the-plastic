@@ -1,6 +1,5 @@
 /*jshint esversion: 6 */
 
-
   
 class Crabby {
     constructor() {
@@ -12,7 +11,7 @@ class Crabby {
       this.vy = 0;
       this.animate = 0;
       this.position = 0;
-    //   this.jumpStrenght = 18;
+      this.jumpStrenght = 18;
     //   this.hp = 3;
       this.img = new Image();
       this.img.src = 'imgs/crabby.png';
@@ -46,6 +45,7 @@ class Crabby {
         // alto desde la posición de y en canvas (dh)
         this.height
       );
+      
     }
     // isTouching(obstacle) {
     //   // algo está tratando de ocupar el mismo espacio en canvas que flash
@@ -56,16 +56,16 @@ class Crabby {
     //     this.y + this.height > obstacle.y
     //   )
     // }
-    // moveLeft() {
-    //   this.vx -= 3
-    //   this.position = 1
-    // }
-    // moveRight() {
-    //   this.vx += 3
-    //   this.position = 2
-    // }
-    // jump() {
-    //   this.vy = -this.jumpStrenght * 2
-    // }
+    moveLeft() {
+      this.vx -= 3;
+      this.position = 4;
+    }
+    moveRight() {
+      this.vx += 3;
+      this.position = 4;
+    }
+    jump() {
+      this.vy = -this.jumpStrenght * 2;
+    }
   } //end of crab class
   

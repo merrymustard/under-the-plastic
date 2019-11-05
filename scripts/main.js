@@ -8,6 +8,8 @@ canvas.height = window.innerHeight;
 
 let frames = 0;
 let interval;
+let gravity = 8.9;
+
 
 
 
