@@ -10,6 +10,16 @@ function crabAnimation() {
     }
   }
 
+  function sharkAnimation() {
+    if (frames % 7 === 0) {
+      if (shark.animate === 3) {
+        shark.animate = 0;
+      } else {
+        shark.animate++;
+      }
+    }
+  }
+
 
   
   function clearCanvas() {
@@ -36,6 +46,7 @@ function startGame() {
         frames++;
         clearCanvas();
         ocean.draw();
+        sharkAnimation();
         shark.draw();
         crabAnimation();
         crab.draw();

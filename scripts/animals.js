@@ -4,18 +4,18 @@
   
   class Shark {
     constructor() {
-      this.width = 600;
-      this.height = 250;
-      this.y = 0 ;// canvas.height - this.height
-      this.x = 10;
+      this.width = 360;
+      this.height = 177.2;
+      this.y = 300 ;// canvas.height - this.height
+      this.x = 300;
       this.vx = 0;
       this.vy = 0;
       this.animate = 0;
       this.position = 0;
-      this.jumpStrenght = 18;
-      this.hp = 3;
+      // this.jumpStrenght = 18;
+      // this.hp = 3;
       this.img = new Image();
-      this.img.src = 'imgs/sharks-06.png';
+      this.img.src = 'imgs/sharky.png';
       this.img.onload = () => {
         this.draw();
       };
@@ -30,13 +30,13 @@
         // imagen de fuente
         this.img,
         // posición de x en la imagen (fuente, sx)
-        (this.animate * 2622) / 4,
+        (this.animate * 3000.26) / 8,
         // posición de y en la imagen (fuente, sy)
-        (this.position * 2622) / 4,
+        (this.position ) ,
         // ancho desde la posición de x (sw)
-        2622 / 4,
+        3000.26 / 8,
         // alto desde la posición de y (sw)
-        2622 / 4,
+        177,
         // posición de x en canvas (destino, dx)
         this.x,
         // posición de y en canvas (destino, dy)
