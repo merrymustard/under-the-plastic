@@ -20,6 +20,12 @@ function crabAnimation() {
     }
   }
 
+  function moveBackground(){
+    if (shark.x + shark.width > canvas.width){
+        console.log('aaaaaiuraaaa');
+      ocean.x-=3;
+    }
+  }
 
   
   function clearCanvas() {
@@ -45,17 +51,22 @@ function startGame() {
     function update(){
         frames++;
         clearCanvas();
+        //backgrouns
         ocean.draw();
+        moveBackground();
+        //sharky
         sharkAnimation();
         shark.draw();
         shark.x += shark.vx;
         shark.y += shark.vy;
-
+        //Crabby
         crabAnimation();
         crab.draw();
         crab.x += crab.vx;
         crab.y += crab.vy;
         crab.y += gravity;
+        //pirate ship
+        ship.draw();
 
       }
 
@@ -94,8 +105,16 @@ function startGame() {
         crab.vx = 0;
         crab.position = 0;
         shark.vx = 0;
-        shark.position = 0;
+        shark.vy =0;
+        shark.position = shark.position;
       };
+
+    //   document.onkeypress = e =>{
+    //     shark.vy += 0;
+    //   };
+
+
+
   
   
   

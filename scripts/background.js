@@ -13,10 +13,7 @@ class Ocean {
           };
       }//end ocean constuctor
       draw(){
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height); // drae normal images
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height); // draw normal images
       }
   }
-
-
-
 

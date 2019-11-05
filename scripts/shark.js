@@ -1,8 +1,6 @@
 /*jshint esversion: 6 */
 
-  
-  
-  class Shark {
+class Shark {
     constructor() {
       this.width = 292.78;
       this.height = 149.2;
@@ -12,7 +10,6 @@
       this.vy = 0;
       this.animate = 0;
       this.position = 0;
-      this.jumpStrenght = 18;
       // this.hp = 3;
       this.img = new Image();
       this.img.src = 'imgs/sharky-03.png';
@@ -69,22 +66,17 @@
       // this.position = 1;
     }
     moveRight() {
-    //  this.x += 10;
      this.vx += 3;
-      // this.position = 2;
+     this.position = 0;
     }
     moveUp() {
       // this.y -= 10;
-      this.y -= 15;
-      this.vy -= 1;
+      this.y -= -3;
+      this.vy -= 3;
     }
     moveDown() {
-      this.y +=3;
+      this.y += 3;
       this.vy += 3;
     }
-   
-    // jump() {
-    //   this.vy = -this.jumpStrenght * 2
-    // }
   } //end of shark class
   
