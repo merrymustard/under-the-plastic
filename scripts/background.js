@@ -1,12 +1,4 @@
 /*jshint esversion: 6 */
-//CREATION OF OBJECT WITH ALL IMAGES
-// const imgs = {
-//     bg:
-//       'imgs/background.jpg',
-//   };
-//   console.log(bg);
-
-
 
 class Ocean {
       constructor(){
@@ -25,8 +17,6 @@ class Ocean {
       }
   }
 
-const ocean = new Ocean();
 
-function update() {
-    ocean.draw();
-  }
+
+

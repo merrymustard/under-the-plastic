@@ -1,9 +1,5 @@
 /*jshint esversion: 6 */
 
-
-
-
-
 class Bubbles {
     constructor(x, y, dx, dy, radius) {
         this.x = x;
@@ -52,8 +48,8 @@ for(var i=0; i<100; i++){
 function animateBubbles(){
     requestAnimationFrame(animateBubbles);
     // ctx.clearRect(0,0,innerWidth,innerHeight);
-    clearCanvas();
-    ocean.draw();
+    // clearCanvas();
+    
     //draw them on the screen
     for(let i=0; i<bubbleArray.length; i++){
         bubbleArray[i].update();
@@ -62,10 +58,6 @@ function animateBubbles(){
 animateBubbles();
 
 
-
-function clearCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
 
 console.log(bubbleArray);
 

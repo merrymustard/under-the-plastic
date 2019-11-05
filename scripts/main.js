@@ -6,10 +6,8 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+let frames = 0;
+let interval;
 
-window.onload = function() {
-    ocean.draw();
-    // document.getElementById("start-button").onclick = function() {
 
-    // };
-  };// end of unload
+
