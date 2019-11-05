@@ -22,6 +22,8 @@ class Crabby {
     draw() {
       if (this.y > canvas.height - this.height) {
         this.y = canvas.height - this.height;
+       }  else if(this.x <= 0){
+        this.x = 0;
       } else {
         this.vy++;
       }

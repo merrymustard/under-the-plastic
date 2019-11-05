@@ -11,7 +11,7 @@ function crabAnimation() {
   }
 
   function sharkAnimation() {
-    if (frames % 7 === 0) {
+    if (frames % 10 === 0) {
       if (shark.animate === 3) {
         shark.animate = 0;
       } else {
@@ -48,6 +48,9 @@ function startGame() {
         ocean.draw();
         sharkAnimation();
         shark.draw();
+        shark.x += shark.vx;
+        shark.y += shark.vy;
+
         crabAnimation();
         crab.draw();
         crab.x += crab.vx;
@@ -55,6 +58,8 @@ function startGame() {
         crab.y += gravity;
 
       }
+
+
   
 
 
@@ -70,12 +75,26 @@ function startGame() {
           case 90:
             crab.jump();
             return;
+            case 37:
+        shark.moveLeft();
+            return;
+            case 39:
+        shark.moveRight();
+            return;
+            case 38:
+        shark.moveUp();
+            return;
+            case 40:
+        shark.moveDown();
+            return;
         }
       };
       
       document.onkeyup = e => {
         crab.vx = 0;
         crab.position = 0;
+        shark.vx = 0;
+        shark.position = 0;
       };
   
   
