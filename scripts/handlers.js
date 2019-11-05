@@ -67,6 +67,9 @@ function startGame() {
         crab.y += gravity;
         //pirate ship
         ship.draw();
+        trash.draw();
+        drawTrash();
+        generateTrash();
 
       }
 
