@@ -15,6 +15,7 @@ class Bubbles {
         ctx.arc(this.x, this.y, this.radius, 0, 2*Math.PI, false);
         ctx.fill();
     }
+    
     update(){
         if (this.x + this.radius > innerWidth || this.x - this.radius < 0){
             this.dx = -this.dx;

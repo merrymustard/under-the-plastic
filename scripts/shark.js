@@ -10,7 +10,7 @@ class Shark {
       this.vy = 0;
       this.animate = 0;
       this.position = 0;
-      // this.hp = 3;
+      this.hp = 10;
       this.img = new Image();
       this.img.src = 'imgs/sharky-03.png';
       this.img.onload = () => {
@@ -50,15 +50,14 @@ class Shark {
         this.height
       );
     }
-    // isTouching(obstacle) {
-    //   // algo está tratando de ocupar el mismo espacio en canvas que flash
-    //   return (
-    //     this.x < obstacle.x + obstacle.width &&
-    //     this.x + this.width > obstacle.x &&
-    //     this.y < obstacle.y + obstacle.height &&
-    //     this.y + this.height > obstacle.y
-    //   )
-    // }
+    isTouching(trash) {
+      return (
+        this.x < trash.x + trash.width &&
+        this.x + this.width > trash.x &&
+        this.y < trash.y + trash.height &&
+        this.y + this.height > trash.y
+      );
+    }
     moveLeft() {
       // this.x -= 10;
      this.vx -= 3;

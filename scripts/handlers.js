@@ -20,6 +20,26 @@ function crabAnimation() {
     }
   }
 
+//   function animateBubbles(){
+//     requestAnimationFrame(animateBubbles);
+//     for(let i=0; i<bubbleArray.length; i++){
+//         bubbleArray[i].update();
+//     }
+// }
+
+  function checkColitions() {
+    trashCan.forEach((trash, i) => {
+      if (shark.isTouching(trash)) {
+          console.log('se lo comio');
+        trashCan.splice(i, 1);
+        shark.hp--;
+      }
+    });
+  }
+
+
+
+
   function moveBackground(){
     if (shark.x + shark.width > canvas.width){
         console.log('aaaaaiuraaaa');
@@ -69,7 +89,8 @@ function startGame() {
         ship.draw();
         trash.draw();
         drawTrash();
-        generateTrash();
+        checkColitions();
+        disposeTrash(trashCan);
 
       }
 
