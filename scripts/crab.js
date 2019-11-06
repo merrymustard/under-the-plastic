@@ -69,5 +69,13 @@ class Crabby {
     jump() {
       this.vy = -this.jumpStrenght * 2;
     }
+    isTouching(trash) {
+      return (
+        this.x < trash.x + trash.width &&
+        this.x + this.width > trash.x &&
+        this.y < trash.y + trash.height &&
+        this.y + this.height > trash.y
+      );
+    }
   } //end of crab class
   

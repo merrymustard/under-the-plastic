@@ -20,6 +20,17 @@ function crabAnimation() {
     }
   }
 
+
+
+  function disposeElements(arr){
+    for(let i=0; i < arr.length; i++){
+      if(arr[i].x < -arr[i].width){
+          arr.splice(i,1);
+          i--; //corregit contador de la i
+      }
+  }
+}
+
 //   function animateBubbles(){
 //     requestAnimationFrame(animateBubbles);
 //     for(let i=0; i<bubbleArray.length; i++){
@@ -27,12 +38,29 @@ function crabAnimation() {
 //     }
 // }
 
-  function checkColitions() {
-    trashCan.forEach((trash, i) => {
-      if (shark.isTouching(trash)) {
-          console.log('se lo comio');
-        trashCan.splice(i, 1);
-        shark.hp--;
+//   function checkColitions() {
+//     trashCan.forEach((trash, i) => {
+//       if (shark.isTouching(trash)) {
+//           console.log('se lo comio');
+//         trashCan.splice(i, 1);
+//         shark.hp--;
+//       }
+//     });
+//   }
+
+
+function checkColitions(collides, character) {
+    
+    collides.forEach((elem, i) => {
+      if (character.isTouching(elem)) {
+          collides.splice(i, 1);
+          if (elem instanceof Trash) {
+            console.log("menos vida");
+            character.hp--;
+          } else if(elem instanceof FishFood) {
+            console.log("mas vida");
+            character.hp++;
+          }
       }
     });
   }
@@ -40,11 +68,16 @@ function crabAnimation() {
 
 
 
-  function moveBackground(){
-    if (shark.x + shark.width > canvas.width){
-        console.log('aaaaaiuraaaa');
-      ocean.x-=3;
+
+
+  function moveBackground(character){
+    if (character.x + character.width + 50 >= canvas.width){
+      ocean.x -= 3;
+    } else if (character.x <= 100) {
+      ocean.x += 3;
     }
+    if (ocean.x >= 0) ocean.x = 0;
+    if (ocean.x <= -(ocean.width - canvas.width)) ocean.x = -(ocean.width - canvas.width);
   }
 
   
@@ -73,7 +106,6 @@ function startGame() {
         clearCanvas();
         //backgrouns
         ocean.draw();
-        moveBackground();
         //sharky
         sharkAnimation();
         shark.draw();
@@ -89,8 +121,22 @@ function startGame() {
         ship.draw();
         trash.draw();
         drawTrash();
-        checkColitions();
-        disposeTrash(trashCan);
+        //fish food
+        fish.draw();
+        drawFish();
+
+
+        moveBackground(shark);
+        checkColitions(trashCan, shark);
+        checkColitions(fishCan, shark);
+        checkColitions(trashCan, crab);
+        checkColitions(fishCan, crab);
+
+
+        disposeElements(trashCan);
+        disposeElements(fishCan);
+
+
 
       }
 
@@ -103,24 +149,34 @@ function startGame() {
         switch (e.keyCode) {
           case 65:
             crab.moveLeft();
+            // if(crab.x <= 0){
+            //     crab.x = 0 + crab.width;
+            //   }
             return;
           case 83:
             crab.moveRight();
+            if(crab.x + crab.width + 50 >= canvas.width){
+                crab.x = 0;
+            }
             return;
           case 90:
             crab.jump();
             return;
-            case 37:
-        shark.moveLeft();
+          case 37:
+            shark.moveLeft();
             return;
-            case 39:
-        shark.moveRight();
+          case 39:
+            shark.moveRight();
+            if (shark.x + shark.width + 50 >= canvas.width){
+                shark.vx = 0;
+            }
+            
             return;
-            case 38:
-        shark.moveUp();
+          case 38:
+            shark.moveUp();
             return;
-            case 40:
-        shark.moveDown();
+          case 40:
+            shark.moveDown();
             return;
         }
       };

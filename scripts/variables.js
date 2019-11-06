@@ -6,6 +6,7 @@ const shark = new Shark();
 const crab = new Crabby();
 const ship = new Pirate();
 const trash = new Trash();
+const fish = new FishFood();
 
 
 
