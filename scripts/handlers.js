@@ -70,15 +70,17 @@ function checkColitions(collides, character) {
 
   function printLives(){
     for(let i = 0; i < crab.hp; i++){
-      ctx.drawImage(life.img, life.x + heartSpace, life.y, life.width, life.height);
-    heartSpace += 34;
-    }
-    for(let i = 0; i < shark.hp; i++){
-      ctx.drawImage(life.img, life.x + heartSpace, life.y, life.width, life.height);
+      ctx.drawImage(lifeCrabby.img, lifeCrabby.x + heartSpace, lifeCrabby.y, lifeCrabby.width, lifeCrabby.height);
     heartSpace += 34;
     }
   }
-
+  function printLivesShark(){
+    for(let i = 0; i < shark.hp; i++){
+      ctx.drawImage(lifeSharky.img, lifeSharky.x + heartSpace, lifeSharky.y, lifeSharky.width, lifeSharky.height);
+      heartSpace += 34;
+    }
+  }
+  
 
 
 
@@ -144,6 +146,7 @@ function startGame() {
         iconCrab.draw();
 
         printLives();
+        printLivesShark();
         heartSpace = 34;
 
 

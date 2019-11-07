@@ -11,7 +11,6 @@ let interval;
 let gravity = 8.9;
 const trashCan = [];
 const fishCan = [];
-const lifeCan = [];
 let heartSpace = 34;
 
 // var bubbleArray =[];
