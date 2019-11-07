@@ -27,25 +27,12 @@ function crabAnimation() {
           arr.splice(i,1);
           i--; //corregit contador de la i
       } 
+      if(arr[i].y < -arr[i].width){
+        arr.splice(i,1);
+        i--; //corregit contador de la i
+    } 
   }
 }
-
-//   function animateBubbles(){
-//     requestAnimationFrame(animateBubbles);
-//     for(let i=0; i<bubbleArray.length; i++){
-//         bubbleArray[i].update();
-//     }
-// }
-
-//   function checkColitions() {
-//     trashCan.forEach((trash, i) => {
-//       if (shark.isTouching(trash)) {
-//           console.log('se lo comio');
-//         trashCan.splice(i, 1);
-//         shark.hp--;
-//       }
-//     });
-//   }
 
 
 function checkColitions(collides, character) {
@@ -61,7 +48,6 @@ function checkColitions(collides, character) {
             if(character.hp < 5){
               character.hp++;
             }
-            
           }
       }
     });
@@ -80,10 +66,6 @@ function checkColitions(collides, character) {
       heartSpace += 34;
     }
   }
-  
-
-
-
 
   function moveBackground(character){
     if (character.x + character.width + 50 >= canvas.width){
@@ -93,6 +75,16 @@ function checkColitions(collides, character) {
     }
     if (ocean.x >= 0) ocean.x = 0;
     if (ocean.x <= -(ocean.width - canvas.width)) ocean.x = -(ocean.width - canvas.width);
+  }
+
+
+  function gameOver(hero) {
+    if (hero.hp === 0) {
+      clearInterval(interval)
+      ctx.font = '200px Arial'
+      ctx.fillStyle = 'white'
+      ctx.fillText('Game Over', canvas.width / 4.5 , canvas.height / 2 );
+    }
   }
 
   
@@ -160,6 +152,8 @@ function startGame() {
         disposeElements(trashCan);
         disposeElements(fishCan);
 
+        gameOver(shark);
+        gameOver(crab);
 
 
       }
