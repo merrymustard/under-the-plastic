@@ -20,7 +20,6 @@ function crabAnimation() {
     }
   }
 
-
   function disposeElements(arr){
     for(let i=0; i < arr.length; i++){
       if(arr[i].x < -arr[i].width){
@@ -36,7 +35,6 @@ function crabAnimation() {
 
 
 function checkColitions(collides, character) {
-    
     collides.forEach((elem, i) => {
       if (character.isTouching(elem)) {
           collides.splice(i, 1);
@@ -83,11 +81,10 @@ function checkColitions(collides, character) {
       clearInterval(interval)
       ctx.font = '200px Arial'
       ctx.fillStyle = 'white'
-      ctx.fillText('Game Over', canvas.width / 4.5 , canvas.height / 2 );
+      ctx.fillText('Game Over', canvas.width / 5 , canvas.height / 2 );
     }
   }
 
-  
   function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
@@ -113,8 +110,6 @@ function startGame() {
         clearCanvas();
         //backgrouns
         ocean.draw();
-
-
         //sharky
         sharkAnimation();
         shark.draw();
@@ -129,7 +124,9 @@ function startGame() {
         crab.y += gravity;
 
         //pirate ship
+        drawBoat();
         ship.draw();
+        
         trash.draw();
         drawTrash();
         //fish food
@@ -151,6 +148,8 @@ function startGame() {
 
         disposeElements(trashCan);
         disposeElements(fishCan);
+        disposeElements(shipCan);
+
 
         gameOver(shark);
         gameOver(crab);

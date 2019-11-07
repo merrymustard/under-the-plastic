@@ -22,6 +22,23 @@ class Pirate{
 }
 
 
+function generateBoat() {
+  if (frames % 500 === 0) {
+    const shipsis = new Pirate();
+    shipCan.push(shipsis);
+    console.log(fishipCanshCan);
+  }
+}
+
+function drawBoat() {
+  generateBoat();
+
+  shipCan.forEach(shipsis => {
+    shipsis.draw();
+  });
+}
+
+
 //TRASHHHHHHHHHHHHHHHHHHHH
 //TRASHHHHHHHHHHHHHHHHHHHH
 //TRASHHHHHHHHHHHHHHHHHHHH
