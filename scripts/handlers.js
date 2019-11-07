@@ -21,13 +21,12 @@ function crabAnimation() {
   }
 
 
-
   function disposeElements(arr){
     for(let i=0; i < arr.length; i++){
       if(arr[i].x < -arr[i].width){
           arr.splice(i,1);
           i--; //corregit contador de la i
-      }
+      } 
   }
 }
 
@@ -55,16 +54,30 @@ function checkColitions(collides, character) {
       if (character.isTouching(elem)) {
           collides.splice(i, 1);
           if (elem instanceof Trash) {
-            console.log("menos vida");
+            console.log("menos vida-----");
             character.hp--;
           } else if(elem instanceof FishFood) {
-            console.log("mas vida");
-            character.hp++;
+            console.log("mas vida+++++");
+            if(character.hp < 5){
+              character.hp++;
+            }
+            
           }
       }
     });
   }
 
+
+  function printLives(){
+    for(let i = 0; i < crab.hp; i++){
+      ctx.drawImage(life.img, life.x + heartSpace, life.y, life.width, life.height);
+    heartSpace += 34;
+    }
+    for(let i = 0; i < shark.hp; i++){
+      ctx.drawImage(life.img, life.x + heartSpace, life.y, life.width, life.height);
+    heartSpace += 34;
+    }
+  }
 
 
 
@@ -94,7 +107,7 @@ function startGame() {
 
 
   window.onload = function() {
-    startGame() ;
+    startGame();
     // document.getElementById("start-button").onclick = function() {
   
       // };
@@ -106,24 +119,32 @@ function startGame() {
         clearCanvas();
         //backgrouns
         ocean.draw();
+
+
         //sharky
         sharkAnimation();
         shark.draw();
         shark.x += shark.vx;
         shark.y += shark.vy;
+
         //Crabby
         crabAnimation();
         crab.draw();
         crab.x += crab.vx;
         crab.y += crab.vy;
         crab.y += gravity;
+
         //pirate ship
         ship.draw();
         trash.draw();
         drawTrash();
         //fish food
-        fish.draw();
         drawFish();
+        iconShark.draw();
+        iconCrab.draw();
+
+        printLives();
+        heartSpace = 34;
 
 
         moveBackground(shark);

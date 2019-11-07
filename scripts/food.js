@@ -8,11 +8,11 @@ class FishFood {
       this.height = 43;
       this.img = new Image();
       if (type == 1){
-        this.img.src = 'imgs/fish-01.png';
+        this.img.src = 'imgs/fish-13.png';
     } else if (type == 2){
-        this.img.src = 'imgs/fish-01.png';
+        this.img.src = 'imgs/fish-13.png';
     } else if (type == 3){
-        this.img.src = 'imgs/fish-01.png';
+        this.img.src = 'imgs/fish-13.png';
         }
     }
     draw() {
