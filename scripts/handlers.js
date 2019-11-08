@@ -51,17 +51,17 @@ function checkColitions(collides, character) {
     });
   }
 
-
   function printLives(){
     for(let i = 0; i < crab.hp; i++){
       ctx.drawImage(lifeCrabby.img, lifeCrabby.x + heartSpace, lifeCrabby.y, lifeCrabby.width, lifeCrabby.height);
-    heartSpace += 34;
+      heartSpace += 34;
     }
   }
+
   function printLivesShark(){
     for(let i = 0; i < shark.hp; i++){
-      ctx.drawImage(lifeSharky.img, lifeSharky.x + heartSpace, lifeSharky.y, lifeSharky.width, lifeSharky.height);
-      heartSpace += 34;
+      ctx.drawImage(lifeSharky.img, lifeSharky.x + heartSpace2, lifeSharky.y, lifeSharky.width, lifeSharky.height);
+      heartSpace2 += 34;
     }
   }
 
@@ -79,7 +79,7 @@ function checkColitions(collides, character) {
   function gameOver(hero) {
     if (hero.hp === 0) {
       clearInterval(interval)
-      ctx.font = '200px Arial';
+      ctx.font = '200px Poppins';
       ctx.fillStyle = 'white';
       ctx.fillText('Game Over', canvas.width / 5 , canvas.height / 2 );
     }
@@ -98,12 +98,23 @@ function startGame() {
 
 
   window.onload = function() {
-    playSound();
-    startGame();
-    // document.getElementById("start-button").onclick = function() {
-  
-      // };
+      canvas.style.display = "none";
+    document.getElementById('start-button').onclick = function() {
+      canvas.style.display = "block";
+      startGame();
+      };
     };// end of unload
+
+    // function myFunction() {
+    //   var x = document.getElementById("myDIV");
+    //   if (x.style.display === "none") {
+    //     x.style.display = "block";
+    //   } else {
+    //     x.style.display = "none";
+    //   }
+    // }
+
+
 
 
     function update(){
@@ -138,8 +149,7 @@ function startGame() {
         printLives();
         printLivesShark();
         heartSpace = 34;
-        
-
+        heartSpace2 = 34;
 
         moveBackground(shark);
         checkColitions(trashCan, shark);
@@ -155,54 +165,79 @@ function startGame() {
 
         gameOver(shark);
         gameOver(crab);
-
+        //moving commands
+        crab.moveLeft();
+        crab.moveRight();
+        crab.jump();
+        shark.moveRight();
+        shark.moveLeft();
+        shark.moveUp();
+        shark.moveDown();
 
       }
 
-      document.onkeydown = e => {
-        switch (e.keyCode) {
-          case 65:
-            crab.moveLeft();
-            return;
-          case 83:
-            crab.moveRight();
-            if(crab.x + crab.width + 50 >= canvas.width){
-                crab.vx = 0;
-            }
-            return;
-          case 90:
-            crab.jump();
-            return;
-          case 37:
-            shark.moveLeft();
-            return;
-          case 39:
-            shark.moveRight();
-            if (shark.x + shark.width + 50 >= canvas.width){
-                shark.vx = 0;
-            }
-            
-            return;
-          case 38:
-            shark.moveUp();
-            return;
-          case 40:
-            shark.moveDown();
-            return;
-        }
-      };
-      
-      document.onkeyup = e => {
+
+
+
+      document.body.addEventListener('keydown', (e) => {   
+        keys[e.keyCode] = true;
+      });
+
+      document.body.addEventListener('keyup', (e) => {
+        keys[e.keyCode] = false;
         crab.vx = 0;
         crab.position = 0;
         shark.vx = 0;
         shark.vy =0;
         shark.position = shark.position;
-      };
+      });
 
-    //   document.onkeypress = e =>{
-    //     shark.vy += 0;
+     
+
+    //   document.onkeydown = e => {
+    //     switch (e.keyCode) {
+    //       case 65:
+    //         crab.moveLeft();
+    //         return;
+    //       case 83:
+    //         crab.moveRight();
+    //         if(crab.x + crab.width + 50 >= canvas.width){
+    //             crab.vx = 0;
+    //         }
+    //         return;
+    //       case 90:
+    //         crab.jump();
+    //         return;
+    //       case 37:
+    //         shark.moveLeft();
+    //         return;
+    //       case 39:
+    //         shark.moveRight();
+    //         if (shark.x + shark.width + 50 >= canvas.width){
+    //             shark.vx = 0;
+    //         }
+            
+    //         return;
+    //       case 38:
+    //         shark.moveUp();
+    //         return;
+    //       case 40:
+    //         shark.moveDown();
+    //         return;
+    //     }
     //   };
+      
+    //   document.onkeyup = e => {
+    //     crab.vx = 0;
+    //     crab.position = 0;
+    //     shark.vx = 0;
+    //     shark.vy =0;
+    //     shark.position = shark.position;
+    //   };
+
+    // //   document.onkeypress = e =>{
+    // //     shark.vy += 0;
+    // //   };
 
 
 

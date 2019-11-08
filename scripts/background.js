@@ -7,7 +7,7 @@ class Ocean {
           this.width = 2400;
           this.height = canvas.height;
           this.img = new Image();
-          this.img.src= "imgs/background.jpg";
+          this.img.src= "imgs/fondo.png";
           this.img.onload = () => {
               this.draw();
           };

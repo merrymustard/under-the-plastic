@@ -4,8 +4,8 @@ class Shark {
   constructor() {
     this.width = 292.78;
     this.height = 149.2;
-    this.y = 300 ;// canvas.height - this.height
-    this.x = 300;
+    this.y = 400 ;// canvas.height - this.height
+    this.x = 800;
     this.vx = 0;
     this.vy = 0;
     this.animate = 0;
@@ -23,8 +23,8 @@ class Shark {
       this.y = canvas.height - this.height;
     } 
     //dont hit the sky
-    else if(this.y <= 200){
-      this.y = 200;
+    else if(this.y <= 300){
+      this.y = 300;
     }  //left
     else if(this.x <= 0){
        this.x = 0;
@@ -59,26 +59,42 @@ class Shark {
     );
   }
   moveLeft() {
-    // this.x -= 10;
-   this.vx -= 3;
-   this.position = 1;
-    // this.position = 1;
+    console.log('left');
+    if(keys[37]){
+      this.vx -= 1;
+      this.position = 1;
+    }
   }
   moveRight() {
-   this.vx += 3;
-   this.position = 0;
+    console.log('right');
+    if(keys[39]){
+      this.vx += 1;
+      this.position = 0;
+      if (shark.x + shark.width + 50 >= canvas.width){
+        shark.vx = 0;
+      }
+    }
   }
   moveUp() {
-    // this.y -= 10;
-    this.y -= -3;
-    this.vy -= 3;
+    console.log('uppp');
+    if(keys[38]){
+      this.y -= -1;
+      this.vy -= 1;
+    }
   }
   moveDown() {
-    this.y += 3;
-    this.vy += 3;
+    console.log('down');
+    if(keys[40]){
+      this.y += 1;
+      this.vy += 1;
+    }
+   
   }
 } //end of shark class
   
+  
+
+
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
@@ -106,11 +122,12 @@ class Crabby {
     draw() {
       if (this.y > canvas.height - this.height) {
         this.y = canvas.height - this.height;
-       }  else if(this.x <= 0){
-        this.x = 0;
-      } else if(this.x <= 0){
-        this.x = 0;
-      }else {
+       }  
+      //  else if(this.x <= 0){
+      //    console.log('outcraby')
+      //   this.x = 0;
+      // }
+      else {
         this.vy++;
       }
       ctx.drawImage(
@@ -135,25 +152,28 @@ class Crabby {
       );
       
     }
-    // isTouching(obstacle) {
-    //   // algo está tratando de ocupar el mismo espacio en canvas que flash
-    //   return (
-    //     this.x < obstacle.x + obstacle.width &&
-    //     this.x + this.width > obstacle.x &&
-    //     this.y < obstacle.y + obstacle.height &&
-    //     this.y + this.height > obstacle.y
-    //   )
-    // }
     moveLeft() {
-      this.vx -= 3;
-      this.position = 4;
+       if(this.x <= 0){
+         console.log('outcraby')
+        this.x = 0;
+      }  else if(keys[65]){
+        this.vx -= 1;
+        this.position = 4;
+      }
     }
     moveRight() {
-      this.vx += 3;
-      this.position = 4;
+      if(keys[83]){
+        this.vx += 1;
+        this.position = 2;
+        if(crab.x + crab.width + 50 >= canvas.width){
+          crab.vx = 0;
+        }
+      }
     }
     jump() {
-      this.vy = -this.jumpStrenght * 2;
+      if(keys[90]){
+        this.vy = -this.jumpStrenght * 1.2;
+      }
     }
     isTouching(trash) {
       return (

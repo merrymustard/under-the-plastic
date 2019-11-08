@@ -5,6 +5,6 @@ const button = document.querySelector('button');
 button.addEventListener('click', playSound);
 
 function playSound(){
-    sound.src = 'audio/theDance.mp3';
+    sound.src = 'audio/SpongeBob.mp3';
     sound.play();
 }

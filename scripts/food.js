@@ -22,7 +22,7 @@ class FishFood {
   }
 
   function generateFish() {
-    if (frames % 200 === 0) {
+    if (frames % 80 === 0) {
       const randomPosition = Math.floor(Math.random() * canvas.height+260) + 50;
       const randomType = Math.floor(Math.random()*4);
       const fishess = new FishFood(randomPosition,randomType);
