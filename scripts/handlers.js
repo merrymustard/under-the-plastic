@@ -98,9 +98,9 @@ function startGame() {
 
 
   window.onload = function() {
-      canvas.style.display = "none";
+      // canvas.style.display = "none";
     document.getElementById('start-button').onclick = function() {
-      canvas.style.display = "block";
+      // canvas.style.display = "block";
       startGame();
       };
     };// end of unload
