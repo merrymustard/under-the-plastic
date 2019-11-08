@@ -79,8 +79,8 @@ function checkColitions(collides, character) {
   function gameOver(hero) {
     if (hero.hp === 0) {
       clearInterval(interval)
-      ctx.font = '200px Arial'
-      ctx.fillStyle = 'white'
+      ctx.font = '200px Arial';
+      ctx.fillStyle = 'white';
       ctx.fillText('Game Over', canvas.width / 5 , canvas.height / 2 );
     }
   }
@@ -98,6 +98,7 @@ function startGame() {
 
 
   window.onload = function() {
+    playSound();
     startGame();
     // document.getElementById("start-button").onclick = function() {
   
@@ -110,6 +111,7 @@ function startGame() {
         clearCanvas();
         //backgrouns
         ocean.draw();
+        renderShape();
         //sharky
         sharkAnimation();
         shark.draw();
@@ -122,11 +124,10 @@ function startGame() {
         crab.x += crab.vx;
         crab.y += crab.vy;
         crab.y += gravity;
-
+        
         //pirate ship
         drawBoat();
-        ship.draw();
-        
+
         trash.draw();
         drawTrash();
         //fish food
@@ -137,6 +138,7 @@ function startGame() {
         printLives();
         printLivesShark();
         heartSpace = 34;
+        
 
 
         moveBackground(shark);
@@ -157,23 +159,15 @@ function startGame() {
 
       }
 
-
-  
-
-
-
       document.onkeydown = e => {
         switch (e.keyCode) {
           case 65:
             crab.moveLeft();
-            // if(crab.x <= 0){
-            //     crab.x = 0 + crab.width;
-            //   }
             return;
           case 83:
             crab.moveRight();
             if(crab.x + crab.width + 50 >= canvas.width){
-                crab.x = 0;
+                crab.vx = 0;
             }
             return;
           case 90:

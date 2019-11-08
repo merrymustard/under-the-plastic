@@ -108,7 +108,9 @@ class Crabby {
         this.y = canvas.height - this.height;
        }  else if(this.x <= 0){
         this.x = 0;
-      } else {
+      } else if(this.x <= 0){
+        this.x = 0;
+      }else {
         this.vy++;
       }
       ctx.drawImage(

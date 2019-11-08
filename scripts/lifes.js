@@ -43,7 +43,7 @@ class LivesCrab extends Lives{
 class LivesShark extends Lives{
   constructor(height,width,x,y,img){
     super(height,width,x,y, "LivesShark");
-    this.x = 1290;
+    this.x = canvas.width-390;
   }
   draw(){
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);

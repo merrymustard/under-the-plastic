@@ -12,8 +12,9 @@ let gravity = 8.9;
 const trashCan = [];
 const fishCan = [];
 let heartSpace = 34;
+//const shipCan =[]; 
 
-// var bubbleArray =[];
+// var eArray =[];
 
 
 

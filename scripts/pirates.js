@@ -23,16 +23,15 @@ class Pirate{
 
 
 function generateBoat() {
-  if (frames % 500 === 0) {
+  if (frames == 5 || frames % 1000 === 0) {
     const shipsis = new Pirate();
     shipCan.push(shipsis);
-    console.log(fishipCanshCan);
   }
 }
 
 function drawBoat() {
   generateBoat();
-
+  
   shipCan.forEach(shipsis => {
     shipsis.draw();
   });
@@ -68,11 +67,13 @@ class Trash {
     }
   }
 
+  
 
   function generateTrash() {
     if (frames % 100 === 0) {
-      const rnd = Math.floor(Math.random() * 3);
-      trashCan.push(new Trash(ship.x, ship.y + ship.height, rnd));
+      shipCan.forEach(eachShip=>{
+        trashCan.push(new Trash(eachShip.x, eachShip.y + eachShip.height, Math.floor(Math.random() * 3)));
+      })
     }
   }
 
